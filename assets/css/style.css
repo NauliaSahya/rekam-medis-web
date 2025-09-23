@@ -1,0 +1,133 @@
+/* ==================================
+   Gaya Umum dan Layout Halaman
+   ================================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    padding-top: 56px;
+}
+
+#wrapper {
+    display: flex;
+}
+
+/* ==================================
+   Gaya Topbar
+   ================================== */
+.navbar {
+    z-index: 1030;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    padding-left: 20px;
+}
+
+/* ==================================
+   Gaya Sidebar
+   ================================== */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    z-index: 1020;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-menu {
+    flex-grow: 1;
+    padding-top: 10px;
+}
+    
+.sidebar-bottom {
+    flex-grow: 0;
+    padding-bottom: 20px;
+}
+
+.menu-title {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.list-group-item {
+    border: none;
+    border-left: 5px solid transparent;
+}
+
+.list-group-item-action {
+    color: #495057;
+    padding: 12px 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, border-left 0.3s;
+}
+
+.list-group-item-action:hover {
+    color: #0d6efd;
+    background-color: #f8f9fa;
+}
+
+.list-group-item-action.active {
+    color: #0d6efd !important;
+    background-color: #f0f8ff !important;
+    border-left-color: #0d6efd;
+}
+
+.list-group-item-action i {
+    color: #495057;
+    transition: color 0.3s;
+}
+
+.list-group-item-action:hover i,
+.list-group-item-action.active i {
+    color: #0d6efd !important;
+}
+
+.list-group-item-action.text-danger i {
+    color: #dc3545 !important;
+}
+
+/* ==================================
+   Gaya Konten Utama
+   ================================== */
+#page-content-wrapper {
+    flex-grow: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+    margin-left: 260px; /* Jarak untuk sidebar */
+}
+
+/* Kustomisasi Kartu (Cards) */
+.card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-primary { background-color: #0d6efd; color: #fff; }
+.card-danger { background-color: #dc3545; color: #fff; }
+.card-warning { background-color: #ffc107; color: #000; }
+.card-success { background-color: #198754; color: #fff; }
+
+.icon-box {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
