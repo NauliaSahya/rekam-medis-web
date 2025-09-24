@@ -2,24 +2,17 @@
 session_start();
 require_once 'config/database.php';
 require_once 'app/models/Dashboard.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
-}
-
+if (!isset($_SESSION['user_id'])) { header('Location: index.php'); exit(); }
 $dashboard = new Dashboard();
 $patientCount = $dashboard->getPatientCount();
 $todayVisits = $dashboard->getTodayVisitsCount();
 $drugStock = $dashboard->getDrugStockCount();
 $doctorCount = $dashboard->getActiveDoctorCount();
-
 function isActive($pageName) {
     $currentPage = basename($_SERVER['PHP_SELF']);
     return $currentPage === $pageName ? 'active' : '';
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -38,12 +31,14 @@ function isActive($pageName) {
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i>
-                            <?php echo htmlspecialchars($_SESSION['role']); ?>
+                            <i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['role']); ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Profil</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') { ?>
+                                <li><a class="dropdown-item" href="user_management.php">Manajemen Pengguna</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            <?php } ?>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </li>
@@ -156,5 +151,15 @@ function isActive($pageName) {
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const wrapper = document.getElementById('wrapper');
+            const toggleSidebar = () => { wrapper.classList.toggle('toggled'); };
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+        });
+    </script>
 </body>
 </html>

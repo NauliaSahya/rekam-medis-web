@@ -1,12 +1,5 @@
 <?php
-// Fungsi untuk memeriksa apakah tautan aktif
-function isActive($pageName) {
-    $currentPage = basename($_SERVER['PHP_SELF']);
-    if ($currentPage === $pageName) {
-        return 'active';
-    }
-    return '';
-}
+    require_once 'app/helpers/functions.php';
 ?>
 
 <nav id="sidebarMenu" class="sidebar">
