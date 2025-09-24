@@ -1,0 +1,13 @@
+# File konfigurasi sensitif
+config/database.php
+
+# File log / cache
+*.log
+*.tmp
+
+# File sistem OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
